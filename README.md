@@ -1,3 +1,4 @@
+![Vision Intelligence Platform](assets/demo.png)
 # 🎯 Vision Intelligence Platform
 
 A production-grade, real-time multi-camera AI surveillance platform built entirely on local hardware. No cloud. No API keys. Just pure engineering.
