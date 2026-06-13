@@ -87,36 +87,34 @@ Open browser at **http://127.0.0.1:5000** 🚀
 
 ## 🏗️ Architecture
 
+```
 Video Sources (MP4 / Webcam / IP Camera)
-           ↓
-    OpenCV Frame Capture
-           ↓
-    ┌──────────────────┐
-    │   YOLOv11m       │ ← Detection (every 4th frame)
-    │   + ByteTrack    │ ← Persistent ID Tracking
-    └──────────────────┘
-           ↓
-    ┌──────────────────┐
-    │   LLaVA (Ollama) │ ← Scene Understanding
-    │   Background     │ ← Non-blocking thread
-    │   Thread         │
-    └──────────────────┘
-           ↓
-    Flask MJPEG Stream → Browser Dashboard
+        ↓
+OpenCV Frame Capture
+        ↓
+[YOLOv11m + ByteTrack] — Detection & Tracking (every 4th frame)
+        ↓
+[LLaVA via Ollama] — Scene Understanding (every 60th frame, background thread)
+        ↓
+Flask MJPEG Stream
+        ↓
+Browser Dashboard
+```
 
 ---
 
 ## 📁 Project Structure
 
+```
 vision-intelligence-platform/
-├── app.py              # Flask server & stream routing
-├── detector.py         # YOLOv11m + ByteTrack pipeline
-├── llm.py              # LLaVA scene analysis
-├── templates/
-│   └── index.html      # Surveillance dashboard UI
-├── requirements.txt    # Python dependencies
-└── .gitignore
-
+    app.py              → Flask server & stream routing
+    detector.py         → YOLOv11m + ByteTrack pipeline
+    llm.py              → LLaVA scene analysis
+    templates/
+        index.html      → Surveillance dashboard UI
+    requirements.txt    → Python dependencies
+    .gitignore
+```
 ---
 
 ## 🎯 Use Cases
