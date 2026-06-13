@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Intelligence Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+        }
+
+        header {
+            background: #111111;
+            border-bottom: 1px solid #00ff88;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 1.2rem;
+            color: #00ff88;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: #00ff88;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff88;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .camera-card {
+            background: #111111;
+            border: 1px solid #222222;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .camera-card:hover {
+            border-color: #00ff88;
+        }
+
+        .camera-header {
+            padding: 0.6rem 1rem;
+            background: #161616;
+            border-bottom: 1px solid #222222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .camera-title {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #00ff88;
+            text-transform: uppercase;
+        }
+
+        .camera-badge {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: #00ff8822;
+            color: #00ff88;
+            border: 1px solid #00ff8844;
+        }
+
+        .camera-feed {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            background: #000;
+        }
+
+        .camera-footer {
+            padding: 0.6rem 1rem;
+            background: #0d0d0d;
+            border-top: 1px solid #1a1a1a;
+            font-size: 0.72rem;
+            color: #aaaaaa;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .camera-footer span {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #111111;
+            border-top: 1px solid #222222;
+            padding: 0.5rem 2rem;
+            display: flex;
+            gap: 2rem;
+            font-size: 0.7rem;
+            color: #555555;
+        }
+
+        .bottom-bar span {
+            color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>⬡ Vision Intelligence Platform</h1>
+    <div class="status">
+        <div class="status-dot"></div>
+        LIVE — 4 FEEDS ACTIVE
+    </div>
+</header>
+
+<div class="grid">
+    <div class="camera-card">
+        <div class="camera-header">
+            <span class="camera-title">📍 CAM-1 — Traffic Intersection</span>
+            <span class="camera-badge">LIVE</span>
+        </div>
+        <img class="camera-feed" src="/video/cam1" alt="Camera 1">
+        <div class="camera-footer">
+            <div><span>YOLO: </span><span id="yolo-cam1">Initializing...</span></div>
+    <div><span>🧠 LLaVA: </span><span id="llava-cam1">Initializing...</span></div>
+        </div>
+    </div>
+
+    <div class="camera-card">
+        <div class="camera-header">
+            <span class="camera-title">📍 CAM-2 — Airport Terminal</span>
+            <span class="camera-badge">LIVE</span>
+        </div>
+        <img class="camera-feed" src="/video/cam2" alt="Camera 2">
+        <div class="camera-footer">
+            <div><span>YOLO: </span><span id="yolo-cam2">Initializing...</span></div>
+        <div><span>🧠 LLaVA: </span><span id="llava-cam2">Initializing...</span></div>
+        </div>
+    </div>
+
+    <div class="camera-card">
+        <div class="camera-header">
+            <span class="camera-title">📍 CAM-3 — Parking Lot</span>
+            <span class="camera-badge">LIVE</span>
+        </div>
+        <img class="camera-feed" src="/video/cam3" alt="Camera 3">
+        <div class="camera-footer">
+            <div><span>YOLO: </span><span id="yolo-cam3">Initializing...</span></div>
+            <div><span>🧠 LLaVA: </span><span id="llava-cam3">Initializing...</span></div>
+        </div>
+    </div>
+
+    <div class="camera-card">
+        <div class="camera-header">
+            <span class="camera-title">📍 CAM-4 — Pedestrian Street</span>
+            <span class="camera-badge">LIVE</span>
+        </div>
+        <img class="camera-feed" src="/video/cam4" alt="Camera 4">
+        <div class="camera-footer">
+            <div><span>YOLO: </span><span id="yolo-cam4">Initializing...</span></div>
+            <div><span>🧠 LLaVA: </span><span id="llava-cam4">Initializing...</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-bar">
+    <div>MODEL: <span>YOLOv11m</span></div>
+    <div>TRACKER: <span>ByteTrack</span></div>
+    <div>BACKEND: <span>Flask + OpenCV</span></div>
+    <div>DEVICE: <span>Apple M4 Max</span></div>
+</div>
+
+<script>
+    // Fetch AI summaries every 2 seconds
+    async function updateSummaries() {
+        try {
+            const res = await fetch('/summaries');
+            const data = await res.json();
+            document.getElementById('yolo-cam1').textContent = data.yolo.cam1;
+            document.getElementById('llava-cam1').textContent = data.llava.cam1;
+            document.getElementById('yolo-cam2').textContent = data.yolo.cam2;
+            document.getElementById('llava-cam2').textContent = data.llava.cam2;
+            document.getElementById('yolo-cam3').textContent = data.yolo.cam3;
+            document.getElementById('llava-cam3').textContent = data.llava.cam3;
+            document.getElementById('yolo-cam4').textContent = data.yolo.cam4;
+            document.getElementById('llava-cam4').textContent = data.llava.cam4;
+        } catch (e) {
+            console.log('Waiting for server...');
+        }
+    }
+
+    // Update every 2 seconds
+    setInterval(updateSummaries, 2000);
+    updateSummaries();
+</script>
+
+</body>
+</html>

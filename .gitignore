@@ -1,0 +1,21 @@
+# Virtual environment
+venv/
+
+# Video files
+*.mp4
+*.avi
+*.mov
+
+# YOLO models
+*.pt
+
+# Ollama/Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Mac junk
+.DS_Store
+
+# Environment variables
+.env
