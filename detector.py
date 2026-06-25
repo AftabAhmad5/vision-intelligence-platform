@@ -15,7 +15,7 @@ class ObjectDetector:
             print("⚠️ Using CPU")
 
         # ONE medium model — best balance of speed & accuracy
-        self.model = YOLO("yolo11m.pt")
+        self.model = YOLO("yolo26n.pt")
         self.model.to(self.device)
 
         # Thread lock — prevents simultaneous inference crashes
